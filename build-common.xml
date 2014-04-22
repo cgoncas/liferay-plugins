@@ -69,7 +69,6 @@
 		<path refid="plugin-test-type.classpath" />
 		<fileset dir="${app.server.lib.portal.dir}" excludes="ant.jar" includes="*.jar" />
 		<fileset dir="${sdk.dir}/lib" includes="junit.jar,mockito-all.jar,powermock-*.jar,spring-test.jar" />
-		<ivy:resources file="ivy.xml" transitive="true" conf="test"/>
 	</path>
 
 	<path id="classpath.aQute.bnd">
@@ -841,6 +840,7 @@ Please find a solution that does not require portal-impl.jar.
 
 					<path id="plugin-test-type.classpath">
 						<pathelement location="@{module.dir}/test-classes/@{test.type}" />
+						<ivy:resources file="@{module.dir}/ivy.xml" transitive="true" conf="test"/>
 					</path>
 
 					<compile-java
@@ -2020,6 +2020,7 @@ Please find a solution that does not require portal-impl.jar.
 
 					<path id="plugin-test-type.classpath">
 						<pathelement location="@{module.dir}/test-classes/@{test.type}" />
+						<ivy:resources file="@{module.dir}/ivy.xml" transitive="true" conf="test"/>
 					</path>
 
 					<if>

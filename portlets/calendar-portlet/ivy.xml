@@ -9,7 +9,56 @@
 
 	<dependencies>
 		<dependency org="com.liferay.plugins.test" name="arquillian-liferay-plugin-test-support" rev="1.0-SNAPSHOT" force="true" conf="test->*" />
+
+		<dependency org="commons-codec" name="commons-codec" rev="1.5" force="true" conf="test->*" />
+
+		<dependency org="junit" name="junit" rev="4.11" force="true" conf="test->*" />
+
+		<dependency org="org.apache.ant" name="ant" rev="1.9.3" force="true" conf="test->*" />
+		<dependency org="org.apache.ant" name="ant-launcher" rev="1.9.3" force="true" conf="test->*" />
+
+		<dependency org="org.easytesting" name="fest-assert" rev="1.4" force="true" conf="test->*" />
+		<dependency org="org.easytesting" name="fest-util" rev="1.1.6" force="true" conf="test->*" />
+
+		<dependency org="org.eclipse.jdt.core.compiler" name="ecj" rev="3.7.2" force="true" conf="test->*" />
+
+		<dependency org="org.hamcrest" name="hamcrest-core" rev="1.3" force="true" conf="test->*" />
+
+		<dependency org="org.jboss.arquillian.config" name="arquillian-config-api" rev="1.1.3.Final" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.config" name="arquillian-config-impl-base" rev="1.1.3.Final" force="true" conf="test->*" />
+
+		<dependency org="org.jboss.arquillian.core" name="arquillian-core-api" rev="1.1.3.Final" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.core" name="arquillian-core-impl-base" rev="1.1.3.Final" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.core" name="arquillian-core-spi" rev="1.1.3.Final" force="true" conf="test->*" />
+
+		<dependency org="org.jboss.arquillian.container" name="arquillian-container-impl-base" rev="1.1.3.Final" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.container" name="arquillian-container-spi" rev="1.1.3.Final" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.container" name="arquillian-container-test-api" rev="1.1.3.Final" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.container" name="arquillian-container-test-impl-base" rev="1.1.3.Final" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.container" name="arquillian-container-test-spi" rev="1.1.3.Final" force="true" conf="test->*" />
+
 		<dependency org="org.jboss.arquillian.container" name="arquillian-tomcat-remote-7" rev="1.0.0.CR6" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.container" name="arquillian-tomcat-common" rev="1.0.0.CR6" force="true" conf="test->*" />
+
+		<dependency org="org.jboss.arquillian.junit" name="arquillian-junit-container" rev="1.1.3.Final" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.junit" name="arquillian-junit-core" rev="1.1.3.Final" force="true" conf="test->*" />
+
+		<dependency org="org.jboss.arquillian.test" name="arquillian-test-api" rev="1.1.3.Final" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.test" name="arquillian-test-impl-base" rev="1.1.3.Final" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.test" name="arquillian-test-spi" rev="1.1.3.Final" force="true" conf="test->*" />
+
+		<dependency org="org.jboss.arquillian.testenricher" name="arquillian-testenricher-cdi" rev="1.0.0.Final" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.testenricher" name="arquillian-testenricher-initialcontext" rev="1.0.0.Final" force="true" conf="test->*" />
+		<dependency org="org.jboss.arquillian.testenricher" name="arquillian-testenricher-resource" rev="1.0.0.Final" force="true" conf="test->*" />
+
+		<dependency org="org.jboss.shrinkwrap" name="shrinkwrap-api" rev="1.2.1" force="true" conf="test->*" />
+		<dependency org="org.jboss.shrinkwrap" name="shrinkwrap-impl-base" rev="1.2.1" force="true" conf="test->*" />
+		<dependency org="org.jboss.shrinkwrap" name="shrinkwrap-spi" rev="1.2.1" force="true" conf="test->*" />
+
+		<dependency org="org.jboss.shrinkwrap.descriptors" name="shrinkwrap-descriptors-api-base" rev="2.0.0-alpha-5" force="true" conf="test->*" />
+		<dependency org="org.jboss.shrinkwrap.descriptors" name="shrinkwrap-descriptors-spi" rev="2.0.0-alpha-5" force="true" conf="test->*" />
+
+		<dependency org="org.jboss.arquillian.protocol" name="arquillian-protocol-servlet" rev="1.0.0.Final" force="true" conf="test->*" />
 	</dependencies>
 </ivy-module>
 

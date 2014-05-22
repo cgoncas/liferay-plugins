@@ -8,7 +8,7 @@
 	</configurations>
 
 	<dependencies>
-		<dependency org="com.liferay" name="arquillian-liferay-plugin-test-support" rev="7.0.0.1-SNAPSHOT" force="true" conf="test->*" />
+		<dependency org="com.liferay" name="arquillian-deployment-builder-shared" rev="7.0.0.1-SNAPSHOT" force="true" conf="test->*" />
 		<dependency org="org.jboss.arquillian.container" name="arquillian-tomcat-remote-7" rev="1.0.0.CR6" force="true" conf="test->*" />
 	</dependencies>
 </ivy-module>

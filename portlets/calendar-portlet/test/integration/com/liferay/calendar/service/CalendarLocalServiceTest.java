@@ -14,7 +14,7 @@
 package com.liferay.calendar.service;
 
 import com.liferay.calendar.util.JCalendarUtil;
-import com.liferay.plugins.test.WebArchiveUtil;
+import com.liferay.portal.arquilian.deployment.builder.WebArchiveUtil;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;

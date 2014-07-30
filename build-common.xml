@@ -89,6 +89,8 @@
 
 	<taskdef classpathref="classpath.org.codehaus.groovy" resource="org/codehaus/groovy/antlib.xml" />
 
+	<taskdef classname="org.codehaus.groovy.ant.Groovyc" classpathref="classpath.org.codehaus.groovy" name="groovyc" />
+
 	<condition property="correct.ant.version">
 		<antversion atleast="1.8.0" />
 	</condition>
@@ -898,6 +900,14 @@ Please find a solution that does not require portal-impl.jar.
 						javac.destdir="@{module.dir}/test-classes/@{test.type}"
 						javac.srcdir="@{module.dir}/test/@{test.type}"
 					/>
+
+					<groovyc
+							classpathref="test.classpath"
+							destdir="@{module.dir}/test-classes/@{test.type}"
+							listfiles="true"
+							srcdir="@{module.dir}/test/@{test.type}"
+					/>
+
 				</then>
 			</if>
 		</sequential>

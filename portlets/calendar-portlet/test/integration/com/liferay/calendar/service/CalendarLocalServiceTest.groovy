@@ -29,6 +29,7 @@ import spock.lang.Specification;
 
 /**
  * @author Miguel Pastor
+ * @author Cristina González
  */
 @RunWith(ArquillianSputnik.class)
 public class CalendarLocalServiceTest extends Specification {

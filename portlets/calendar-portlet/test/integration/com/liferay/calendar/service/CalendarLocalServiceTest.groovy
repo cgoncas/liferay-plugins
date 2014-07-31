@@ -44,7 +44,7 @@ public class CalendarLocalServiceTest extends Specification {
 		return webArchive.addAsLibrary(groovyLib[0]);
 	}
 
-	def "testGetCalendarsCount"() {
+	def "When there has not been added any calendar , the number of calendars should be 0"() {
 		expect:
 		CalendarLocalServiceUtil.getCalendarsCount() == 0;
 	}

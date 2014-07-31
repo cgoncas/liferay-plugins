@@ -12,25 +12,23 @@
  * details.
  */
 
-package com.liferay.calendar.service;
+package com.liferay.calendar.service
 
-import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.spock.ArquillianSputnik;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.runner.RunWith
+
+import spock.lang.Specification;
 
 /**
  * @author Miguel Pastor
  */
-@RunWith(Arquillian.class)
-public class CalendarLocalServiceTest {
+@RunWith(ArquillianSputnik.class)
+public class CalendarLocalServiceTest extends Specification {
 
-	@Test
-	public void testGetCalendarsCount() {
-		int count = CalendarLocalServiceUtil.getCalendarsCount();
-
-		Assert.assertEquals(0, count);
+	def "testGetCalendarsCount"() {
+		expect:
+		CalendarLocalServiceUtil.getCalendarsCount() == 0;
 	}
 
 }

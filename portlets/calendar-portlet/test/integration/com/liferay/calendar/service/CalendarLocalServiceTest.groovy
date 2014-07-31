@@ -14,7 +14,14 @@
 
 package com.liferay.calendar.service
 
-import org.jboss.arquillian.spock.ArquillianSputnik;
+import com.liferay.ant.arquillian.WebArchiveBuilder
+
+import org.jboss.arquillian.container.test.api.Deployment
+import org.jboss.arquillian.spock.ArquillianSputnik
+
+import org.jboss.shrinkwrap.api.spec.WebArchive
+import org.jboss.shrinkwrap.resolver.api.Resolvers
+import org.jboss.shrinkwrap.resolver.api.maven.MavenResolverSystem
 
 import org.junit.runner.RunWith
 
@@ -25,6 +32,17 @@ import spock.lang.Specification;
  */
 @RunWith(ArquillianSputnik.class)
 public class CalendarLocalServiceTest extends Specification {
+
+	@Deployment
+	public static WebArchive getDeployment() {
+		File[] groovyLib = (File[])(Resolvers.use(MavenResolverSystem.class).
+			resolve("org.codehaus.groovy:groovy-all:2.0.1")).
+			withoutTransitivity().as(File.class);
+
+		WebArchive webArchive = WebArchiveBuilder.build();
+
+		return webArchive.addAsLibrary(groovyLib[0]);
+	}
 
 	def "testGetCalendarsCount"() {
 		expect:

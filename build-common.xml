@@ -518,7 +518,8 @@ Error-Prone was automatically installed. Please rerun your task.
 								javac.destdir="@{module.dir}/classes"
 								javac.srcdir="@{module.dir}/src"
 								module.dir="@{module.dir}"
-							/>
+								check.types="${check.types}"
+									/>
 						</else>
 					</if>
 				</else>
@@ -708,11 +709,26 @@ Error-Prone was automatically installed. Please rerun your task.
 		<attribute name="javac.destdir" />
 		<attribute name="javac.srcdir" />
 		<attribute default="" name="module.dir" />
+		<attribute default="no" name="check.types" />
 
 		<sequential>
 			<copy todir="@{javac.destdir}">
 				<fileset dir="@{javac.srcdir}" excludes="**/*.java" />
 			</copy>
+
+			<if>
+				<equals arg1="@{check.types}" arg2="yes" />
+				<then>
+					<property environment="env"/>
+
+					<property name="checkerframework" value="${env.CHECKERFRAMEWORK}" />
+
+					<!-- On Mac/Linux, use the javac shell script; on Windows, use javac.bat -->
+					<condition property="cfJavac" value="javac.bat" else="javac">
+						<os family="windows" />
+					</condition>
+				</then>
+			</if>
 
 			<if>
 				<and>
@@ -770,19 +786,44 @@ Error-Prone was automatically installed. Please rerun your task.
 				</then>
 			</if>
 
-			<javac
-				classpathref="@{javac.classpathref}"
-				compiler="${javac.compiler}"
-				debug="${javac.debug}"
-				deprecation="${javac.deprecation}"
-				destdir="@{javac.destdir}"
-				encoding="${javac.encoding}"
-				includeAntRuntime="false"
-				nowarn="${javac.nowarn}"
-				source="${javac.source}"
-				srcdir="@{javac.srcdir}"
-				target="${javac.target}"
-			/>
+			<if>
+				<equals arg1="@{check.types}" arg2="yes" />
+
+				<then>
+					<javac
+						fork="yes"
+						executable="${checkerframework}/checker/bin/${cfJavac}"
+						classpathref="@{javac.classpathref}"
+						debug="${javac.debug}"
+						deprecation="${javac.deprecation}"
+						destdir="@{javac.destdir}"
+						encoding="${javac.encoding}"
+						includeAntRuntime="false"
+						nowarn="${javac.nowarn}"
+						source="${javac.source}"
+						srcdir="@{javac.srcdir}"
+						target="${javac.target}"
+						>
+						<compilerarg line="-processor org.checkerframework.checker.nullness.NullnessChecker"/>
+						<compilerarg line="-Xmaxerrs 10000"/>
+					</javac>
+				</then>
+				<else>
+					<javac
+						classpathref="@{javac.classpathref}"
+						compiler="${javac.compiler}"
+						debug="${javac.debug}"
+						deprecation="${javac.deprecation}"
+						destdir="@{javac.destdir}"
+						encoding="${javac.encoding}"
+						includeAntRuntime="false"
+						nowarn="${javac.nowarn}"
+						source="${javac.source}"
+						srcdir="@{javac.srcdir}"
+						target="${javac.target}"
+						/>
+				</else>
+			</if>
 
 			<var name="javac.source" unset="true" />
 			<var name="javac.target" unset="true" />
@@ -813,6 +854,16 @@ Error-Prone was automatically installed. Please rerun your task.
 			<copy todir="@{module.dir}/docroot/WEB-INF/lib">
 				<fileset dir="${app.server.lib.portal.dir}" includes="${plugin.jars}" />
 			</copy>
+
+
+
+			<if>
+				<available file="@{module.dir}/overwrite" />
+				<then>
+					<property name="check.types" value="yes" />
+				</then>
+			</if>
+
 
 			<if>
 				<available file="@{module.dir}/overwrite" />
@@ -899,6 +950,7 @@ Please find a solution that does not require portal-impl.jar.
 						javac.destdir="@{module.dir}/docroot/WEB-INF/classes"
 						javac.srcdir="@{module.dir}/docroot/WEB-INF/src"
 						module.dir="@{module.dir}"
+						check.types="${check.types}"
 					/>
 				</then>
 			</if>
@@ -1025,7 +1077,8 @@ Please find a solution that does not require portal-impl.jar.
 						javac.destdir="@{module.dir}/test-classes/@{test.type}"
 						javac.srcdir="@{module.dir}/test/@{test.type}"
 						module.dir="@{module.dir}"
-					/>
+						check.types="${check.types}"
+							/>
 				</then>
 			</if>
 		</sequential>

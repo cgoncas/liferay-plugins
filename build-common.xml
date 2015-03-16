@@ -1280,6 +1280,30 @@ Please find a solution that does not require portal-impl.jar.
 						<ivy:resources type="bundle,jar,orbit" />
 					</path>
 
+					<pathconvert pathsep=","
+						refid="plugin-test-type.classpath"
+						property="plugin-test-type.classpath.property"
+					/>
+
+					<if>
+						<contains string="${plugin-test-type.classpath.property}" substring="bndlib"/>
+						<then>
+							<path id="plugin.test.classpath">
+								<restrict >
+									<path refid="plugin.classpath"/>
+									<rsel:not>
+										<rsel:name name="org.osgi.compendium.jar"/>
+									</rsel:not>
+								</restrict>
+							</path>
+						</then>
+						<else>
+							<path id="plugin.test.classpath">
+								<path refid="plugin.classpath"/>
+							</path>
+						</else>
+					</if>
+
 					<compile-java
 						javac.classpathref="test.classpath"
 						javac.destdir="@{module.dir}/test-classes/@{test.type}"

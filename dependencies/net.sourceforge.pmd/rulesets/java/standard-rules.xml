@@ -196,5 +196,33 @@ public class Foo {
 }
 			]]>
 		</example>
+		<rule
+			class="net.sourceforge.pmd.rules.junit.JUnitTestsShouldContainAsserts"
+			externalInfoUrl="http://pmd.sourceforge.net/rules/junit.html#JUnitTestsShouldIncludeAssert"
+			language="java"
+			message="JUnit tests should include assert() or fail()"
+			name="JUnitTestsShouldIncludeAssert"
+			since="0.1">
+		<description>
+			[Origin rule set file rulesets/junit.xml] JUnit tests should include at least one assertion.  This makes the tests more robust, and
+			using assert with messages provide the developer a clearer idea of what the test does.
+		</description>
+		<priority>3</priority>
+		<example>
+			<![CDATA[
+public class Foo extends TestCase {
+
+public void testSomething() {
+	Bar b = findBar();
+
+	// This is better than having a NullPointerException
+	// assertNotNull("bar not found", b);
+
+	b.work();
+}
+
+}
+			]]>
+		</example>
 	</rule>
 </ruleset>

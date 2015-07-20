@@ -1989,6 +1989,15 @@ Please find a solution that does not require portal-impl.jar.
 									<if>
 										<available file="@{module.dir}/bower.json" />
 										<then>
+											<pathconvert pathsep="${line.separator}|   |-- "
+												property="echo.js.path"
+												refid="js.config.generator.path">
+											</pathconvert>
+
+											<echo message="|-- js config path for @{module.dir}"/>
+											<echo message="|   |"/>
+											<echo message="|   |-- ${echo.js.path}"/>
+
 											<copy todir="@{module.dir}/.js-cache/META-INF/resources">
 												<path refid="js.config.generator.path" />
 											</copy>

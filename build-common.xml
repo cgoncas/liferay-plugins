@@ -722,6 +722,16 @@ Error-Prone was automatically installed. Please rerun your task.
 
 							<mkdir dir="@{module.dir}/classes" />
 
+							<pathconvert pathsep="${line.separator}|   |-- "
+										 property="echo.path.compile"
+										 refid="plugin.classpath">
+							</pathconvert>
+
+							<!-- show classpath jars -->
+							<echo message="|-- compile classpath for @{module.dir}"/>
+							<echo message="|   |"/>
+							<echo message="|   |-- ${echo.path.compile}"/>
+
 							<compile-java
 								javac.classpathref="plugin.classpath"
 								javac.destdir="@{module.dir}/classes"
@@ -1891,6 +1901,16 @@ Please find a solution that does not require portal-impl.jar.
 			<check-snapshot
 				module.dir="@{module.dir}"
 			/>
+
+			<pathconvert pathsep="${line.separator}|   |-- "
+						 property="echo.path.compile"
+						 refid="plugin.classpath">
+			</pathconvert>
+
+			<!-- show classpath jars -->
+			<echo message="|-- compile classpath for @{module.dir}"/>
+			<echo message="|   |"/>
+			<echo message="|   |-- ${echo.path.compile}"/>
 
 			<if>
 				<equals arg1="${snapshot.uptodate}" arg2="true" />
